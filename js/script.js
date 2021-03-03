@@ -10,16 +10,43 @@
 var app = new Vue({
   el: '#app',
   data: {
-    cd: []
+    cd: [],
+    selectedDischi: [],
+    generi: ['All'],
+    selected: 'All'
   },
   created: function created() {
     var _this = this;
 
     axios.get('server.php').then(function (result) {
       _this.cd = result.data;
+      _this.selectedDischi = _this.cd;
+
+      _this.cd.forEach(function (element, i) {
+        if (!_this.generi.includes(element.genre)) {
+          _this.generi.push(element.genre);
+        }
+      });
     })["catch"](function (error) {
       return alert('Errore caricamento database!');
     });
+  },
+  methods: {
+    filter: function filter(event) {
+      var _this2 = this;
+
+      this.selected = event.target.value;
+      this.selectedDischi = [];
+      this.cd.forEach(function (element, i) {
+        if (_this2.selected == 'All') {
+          _this2.selectedDischi = _this2.cd;
+        } else {
+          if (element.genre.includes(_this2.selected)) {
+            _this2.selectedDischi.push(element);
+          }
+        }
+      });
+    }
   }
 });
 

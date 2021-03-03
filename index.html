@@ -11,26 +11,23 @@
 </head>
 <body>
   <header>
-      <div class="container">
-          <img src="logo.png" alt="logo">
-      </div>
-      <select>
-        <option value="All">
-          All
-        </option>
-      </select>
+    <div class="container">
+      <img src="logo.png" alt="logo">
+    </div>
   </header>
   <div class="cds-container container" id="app">
-
-      <div class="cd" v-for="song in cd">
-        <img :src="song.poster" alt="Poster">
-        <h3>{{song.name}}</h3>
-        <span class="author">{{song.singer}}</span>
-        <span class="year">{{song.year}}</span>
-      </div>
-
+    <select @change="filter($event)">
+      <option v-for="genere in generi" :value="genere">
+        {{ genere }}
+      </option>
+    </select>
+    <div class="cd" v-for="song in selectedDischi">
+      <img :src="song.poster" alt="Poster">
+      <h3>{{song.name}}</h3>
+      <span class="author">{{song.singer}}</span>
+      <span class="year">{{song.year}}</span>
+    </div>
   </div>
-
   <script src="js/script.js" charset="utf-8"></script>
 </body>
 </html>
