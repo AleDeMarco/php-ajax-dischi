@@ -1,6 +1,6 @@
 <?php
-  include __DIR__ .'db.php';
- ?>
+  include 'db.php';
+?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -23,12 +23,12 @@
       </select>
   </header>
   <div class="cds-container container">
-    <?php for ($i=0; $i < 7; $i++) { ?>
+    <?php foreach ($database as $cd) { ?>
       <div class="cd">
-        <img src="<?php echo $database[$i].[4]; ?>" alt="Poster">
-        <h3><?php echo $database[$i].[1]; ?></h3>
-        <span class="author"><?php echo $database.'singer'; ?></span>
-        <span class="year"><?php echo $database.'year'; ?></span>
+        <img src="<?php echo $cd['poster'] ?>" alt="Poster">
+        <h3><?php echo $cd['name'] ?></h3>
+        <span class="author"><?php echo $cd['singer'] ?></span>
+        <span class="year"><?php echo $cd['year'] ?></span>
       </div>
     <?php } ?>
   </div>
