@@ -12,12 +12,14 @@ var app = new Vue({
   data: {
     cd: []
   },
-  mounted: function mounted() {
-    console.log('ciao'); // axios.get('../server.php').then(result => {
-    //   this.cd = result.data;
-    //   console.log('test');
-    //   console.log(this.result.data);
-    // }).catch(error => alert('Errore caricamento database!'));
+  created: function created() {
+    var _this = this;
+
+    axios.get('server.php').then(function (result) {
+      _this.cd = result.data;
+    })["catch"](function (error) {
+      return alert('Errore caricamento database!');
+    });
   }
 });
 

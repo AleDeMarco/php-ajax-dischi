@@ -23,9 +23,9 @@
   <div class="cds-container container" id="app">
 
       <div class="cd" v-for="song in cd">
-        <img :src="" alt="Poster">
-        <h3>{{song.singer}}</h3>
-        <span class="author">{{song.author}}</span>
+        <img :src="song.poster" alt="Poster">
+        <h3>{{song.name}}</h3>
+        <span class="author">{{song.singer}}</span>
         <span class="year">{{song.year}}</span>
       </div>
 
